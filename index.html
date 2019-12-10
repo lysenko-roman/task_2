@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task_2</title>
+
+</head>
+<style>
+
+#container {
+    background: antiquewhite;
+    width:  max-content;
+    border: 3px solid darkgray;
+    display: flex;
+    align-items: baseline;
+    position: absolute;
+
+}
+    #container div {
+        margin: 0;
+        padding: 0;
+        border: 1px solid black;
+    }
+
+    button {
+        margin-top: 160px;
+    }
+</style>
+<body>
+    <div id="container">
+
+    </div>
+
+    <script>
+
+        const myObj = {
+            area_width: 30,
+            area_height: 35,
+            objects : [
+                {
+                    position: {x: 0, y: 10}, size: { width: 10, height: 20}},
+
+                {
+                    position: {x: 0, y: 0}, size: { width: 30, height: 10}},
+                {
+                    position: {x: 30, y: 0}, size: { width: 30, height: 5}},
+
+            ]
+        }
+        console.log(myObj);
+
+
+
+           const str = JSON.stringify(myObj);
+
+             console.log(str);
+
+          const convert_to = JSON.parse(str);
+           console.log(convert_to);
+
+            let block1 = document.createElement('div');
+            block1.id = 'block1';
+            block1.style.width = '10ex';
+            block1.style.height = '20ex';
+            block1.style.backgroundColor = 'green';
+
+
+            let block2 = document.createElement('div');
+            block2.id = 'block2';
+            block2.style.width = '30ex';
+            block2.style.height = '10ex';
+            block2.style.backgroundColor = 'green';
+
+            let block3 = document.createElement('div');
+            block3.id = 'block3';
+            block3.style.width = '30ex';
+            block3.style.height = '5ex';
+            block3.style.backgroundColor = 'green';
+
+        document.querySelector('#container').appendChild(block1);
+        document.querySelector('#container').appendChild(block2);
+        document.querySelector('#container').appendChild(block3);
+
+            let btn = document.createElement("button");
+            btn.Id = 'btnId';
+            btn.innerHTML = 'Go';
+
+            btn.onclick = function () {
+
+                let css1 = myObj.objects[0];
+                for (let prop in css1) {
+                    document.querySelector('#block1').style[prop] = css1[prop];
+                }
+
+                let css2 = myObj.objects[1];
+                for (let prop in css2) {
+                    document.querySelector('#block2').style[prop] = css2[prop];
+                }
+
+                let css3 = myObj.objects[2];
+                for (let prop in css3) {
+                    document.querySelector('#block3').style[prop] = css3[prop];
+                }
+                console.log(myObj.objects);
+
+
+            }
+
+        document.body.appendChild(btn);
+
+    </script>
+</body>
+</html>
